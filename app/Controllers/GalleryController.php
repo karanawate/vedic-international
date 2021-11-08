@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\GalleryModel;
+use App\Models\GalleryModel;
 
 class GalleryController extends BaseController
 {
@@ -25,10 +25,10 @@ class GalleryController extends BaseController
 
     public function galleryAdd()
     {
+        $GalleryModel = new GalleryModel();
         if(isset($_POST['submit']))
         {
-            $session      = \Config\Services::session();
-            $GalleryModel = new GalleryModel();
+            $session      = \Config\Services::session();       
             $usersession  = $session->get('adminsession');
             if(!empty($usersession))
             { 
@@ -56,7 +56,7 @@ class GalleryController extends BaseController
                         if(in_array($fileType,$valid_img_type))
                         {
                             $filename = $fileName->getName();
-                            $filename->move('blogimages', $fileName);
+                            $fileName->move('blogimages', $filename);
                             $data = array(
                                 'title'   =>$title,
                                 'date'    =>$date,

@@ -29,7 +29,7 @@
 										</div>
 										<div class="mb-3">
 												<label for="formFile" class="form-label">blog banner</label>
-												<input class="form-control" type="file" name="blog_file" id="formFile">
+												<input class="form-control" type="file" name="galfile" id="galfile">
 												<span style="color:red"><?php if(isset($errors)) { echo $errors; }?></span>
 										</div>
 

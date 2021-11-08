@@ -63,6 +63,11 @@ class GalleryController extends BaseController
                                 'galfile' =>$filename
                             );
                             $res = $GalleryModel->inserted_gallery($data);
+                            if(!empty($res)){
+                                return redirect()->to( base_url('add-gallery'))->with('msg', 'Added gallery Successfully');
+                            }else{
+                                return redirect()->to( base_url('add-gallery'))->with('msg', 'Added gallery Successfully');
+                            }
                         }else{
                             return view('gallery/add_gallery');
                         }

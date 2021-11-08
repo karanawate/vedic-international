@@ -16,7 +16,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="p-4 border rounded">
-									<form class="row g-3 needs-validation"  method="POST"  action="<?php echo base_url('blog-submit'); ?>" enctype="multipart/form-data" >
+									<form class="row g-3 needs-validation"  method="POST"  action="<?php echo base_url('gallery-submit'); ?>" enctype="multipart/form-data" >
 										<div class="col-md-12">
 											<label for="validationCustom01" class="form-label">Title</label>
 											<input type="text" name="title" class="form-control">

@@ -22,4 +22,19 @@ class GalleryController extends BaseController
          return view('gallery/view_gallery');
     }
 
+    public function galleryAdd()
+    {
+        if(isset($_POST['submit']))
+        {
+            $session      = \Config\Services::session();
+            $usersession  = $session->get('adminsession');
+            if(!empty($usersession))
+            {
+                    
+            }else{
+                return view('login');
+            } 
+        }
+    }
+
 }

@@ -39,4 +39,17 @@ class GalleryModel extends Model
     protected $afterFind            = [];
     protected $beforeDelete         = [];
     protected $afterDelete          = [];
+
+
+
+    public function inserted_gallery($data)
+    {
+        $db  = \Config\database::connect();
+        $res = $db->table('galleries')->insert($data); 
+        if(!empty($res)){
+            return $res;
+        }else{
+            return $res;
+        }
+    }
 }

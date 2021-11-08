@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\GalleryModel;
 
 class GalleryController extends BaseController
 {
@@ -27,6 +28,7 @@ class GalleryController extends BaseController
         if(isset($_POST['submit']))
         {
             $session      = \Config\Services::session();
+            $GalleryModel = new GalleryModel();
             $usersession  = $session->get('adminsession');
             if(!empty($usersession))
             { 
@@ -48,9 +50,22 @@ class GalleryController extends BaseController
                        );
                        return view('gallery/add_gallery', $data);
                     }else if(!$this->validate($rules)){ 
-                        echo "validation found";
+                       return view('gallery/add_gallery', ['validation' =>$this->validator]);
                     }else{
-                        echo "sdfa";
+                        $valid_img_type = array('image/png','image/jpeg', 'image/jpg');
+                        if(in_array($fileType,$valid_img_type))
+                        {
+                            $filename = $fileName->getName();
+                            $filename->move('blogimages', $fileName);
+                            $data = array(
+                                'title'   =>$title,
+                                'date'    =>$date,
+                                'galfile' =>$filename
+                            );
+                            $res = $GalleryModel->inserted_gallery($data);
+                        }else{
+                            return view('gallery/add_gallery');
+                        }
                     }    
                     
                     

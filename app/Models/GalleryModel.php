@@ -48,11 +48,11 @@ class GalleryModel extends Model
         $db  = \Config\Database::connect();
         $res = $db->table('galleries')->insert($gallerydata); 
         echo $db->getLastQuery();
-        if(!empty($res)){
-            return $res;
-        }else{
-            return $res;
-        }
+        // if(!empty($res)){
+        //     return $res;
+        // }else{
+        //     return $res;
+        // }
     }
     public function getGalleries()
     {

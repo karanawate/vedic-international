@@ -59,6 +59,10 @@ class GalleryModel extends Model
         $db    = \Config\Database::connect();
         $query =  $db->table('galleries');
         $res    = $query->get()->getResultArray();
-        print_r($res);die;
+          if(!empty($res)){
+              return $res;
+          }else{
+              return $res;
+          }
     }
 }

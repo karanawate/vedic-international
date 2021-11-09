@@ -20,7 +20,15 @@ class GalleryController extends BaseController
 
     public function view_gallery()
     {
-         return view('gallery/view_gallery');
+        $GalleryModel = new GalleryModel();
+        $session      = \Config\Services::session();
+        $usersession  = $session->get('adminsession');
+          if(!empty($usersession)){
+              $galleries = $GalleryModel->getGalleries();
+              return view('gallery/view_gallery');
+          }else{
+              return view('login');
+          }
     }
 
     public function galleryAdd()
@@ -57,12 +65,12 @@ class GalleryController extends BaseController
                         {
                             $filename = $fileName->getName();
                             $fileName->move('blogimages', $filename);
-                            $data = array(
+                            $gallerydata = array(
                                 'title'   =>$title,
                                 'date'    =>$date,
-                                'galfile' =>$filename
+                                'gal_file' =>$filename
                             );
-                            $res = $GalleryModel->inserted_gallery($data);
+                            $res = $GalleryModel->inserted_gallery($gallerydata);
                             if(!empty($res)){
                                 return redirect()->to( base_url('add-gallery'))->with('msg', 'Added gallery Successfully');
                             }else{
@@ -71,9 +79,7 @@ class GalleryController extends BaseController
                         }else{
                             return view('gallery/add_gallery');
                         }
-                    }    
-                    
-                    
+                    }     
             }else{
                 return view('login');
             } 

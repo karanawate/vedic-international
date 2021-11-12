@@ -86,4 +86,12 @@ class GalleryController extends BaseController
         }
     }
 
+
+
+
+
+
+
+
+
 }

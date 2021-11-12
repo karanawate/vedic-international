@@ -54,6 +54,10 @@ $routes->get('add-gallery','GalleryController::index');
 $routes->get('view-gallery','GalleryController::view_gallery');
 $routes->post('gallery-submit', 'GalleryController::galleryAdd');
 
+/* PYRAMID ROUTES */
+
+
+
 /*
  * You will have access to the $routes object within that file without
  * needing to reload it.

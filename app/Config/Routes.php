@@ -28,6 +28,10 @@ $routes->setAutoRoute(true);
  */
 
 
+//  site route
+
+$routes->get('/web','WebController::index');
+
 /*
 
 $routes->get('/', 'Home::index');
